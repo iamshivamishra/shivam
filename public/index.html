@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ludo Online</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="home" class="screen">
+  <h1>🎲 Ludo Online</h1>
+  <input id="name" placeholder="Your name" maxlength="14">
+  <button id="create">Create room</button>
+  <div class="or">— or join with a room code —</div>
+  <div class="row"><input id="code" placeholder="CODE" maxlength="5"><button id="join">Join</button></div>
+  <p id="err" class="err"></p>
+</div>
+
+<div id="lobby" class="screen hidden">
+  <h2>Room code</h2>
+  <div id="roomCode" class="bigcode"></div>
+  <button id="copy">Copy invite link</button>
+  <ul id="plist"></ul>
+  <button id="start">Start game</button>
+  <p id="lobbyMsg" class="or"></p>
+</div>
+
+<div id="game" class="screen hidden">
+  <div class="hud"><div id="turnPill" class="pill"></div><span id="gcode" class="or"></span></div>
+  <div class="frame"><div id="board" class="board"></div></div>
+  <div class="diceRow">
+    <div id="scene" class="scene"><div id="cube" class="cube"></div></div>
+    <div class="side"><div id="msg" class="msg"></div><button id="rollBtn" disabled>🎲 Roll dice</button></div>
+  </div>
+  <button id="again" class="hidden">Play again</button>
+</div>
+
+<div id="voiceBar" class="voiceBar hidden">
+  <button id="micBtn" class="voiceBtn" title="Toggle microphone">
+    <svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0"/><path d="M12 18v3"/></svg>
+    <span class="slash"></span>
+  </button>
+  <button id="speakerBtn" class="voiceBtn" title="Toggle speaker">
+    <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path class="wv1" d="M16.5 8.5a5 5 0 0 1 0 7"/><path class="wv2" d="M19 6a9 9 0 0 1 0 12"/></svg>
+    <span class="slash"></span>
+  </button>
+</div>
+<div id="voiceNote" class="voiceNote hidden"></div>
+<button id="chatToggle" class="chatToggle hidden">💬<span id="chatBadge" class="badge hidden">0</span></button>
+<div id="chatPanel" class="chatPanel hidden">
+  <div class="chatHead"><span>Room chat</span><button id="chatClose">✕</button></div>
+  <div id="chatMsgs" class="chatMsgs"></div>
+  <form id="chatForm" class="chatForm">
+    <input id="chatInput" maxlength="300" autocomplete="off" placeholder="Message everyone…">
+    <button type="submit">➤</button>
+  </form>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="client.js"></script>
+</body>
+</html>
